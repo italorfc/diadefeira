@@ -1,36 +1,30 @@
 package br.com.diadefeira.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="feira")
-public class Feira implements Serializable{
+@Document
+public class Feirante implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
 	private String nome;
-	private String latitude;
-	private String longitude;
+	private String nomeBanca;
+	private String segmento;
 	
-	@DBRef(lazy=true)
-	private List<Feirante> feirantes = new ArrayList<>();
-	
-	public Feira() {
+	public Feirante() {
 		
 	}
 	
-	public Feira(String id, String nome, String latitude, String longitude) {
+	public Feirante(String id, String nome, String nomeBanca, String segmento) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.nomeBanca = nomeBanca;
+		this.segmento = segmento;
 	}
 
 	public String getId() {
@@ -49,28 +43,20 @@ public class Feira implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getLatitude() {
-		return latitude;
+	public String getNomeBanca() {
+		return nomeBanca;
 	}
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
+	public void setNomeBanca(String nomeBanca) {
+		this.nomeBanca = nomeBanca;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	public String getSegmento() {
+		return segmento;
 	}
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-	
-	public List<Feirante> getFeirantes() {
-		return feirantes;
-	}
-
-	public void setFeirantes(List<Feirante> feirantes) {
-		this.feirantes = feirantes;
+	public void setSegmento(String segmento) {
+		this.segmento = segmento;
 	}
 
 	@Override
@@ -89,7 +75,7 @@ public class Feira implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Feira other = (Feira) obj;
+		Feirante other = (Feirante) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -97,5 +83,5 @@ public class Feira implements Serializable{
 			return false;
 		return true;
 	}
-
+	
 }
